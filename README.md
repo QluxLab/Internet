@@ -1,8 +1,12 @@
-# Self-Hosted Internet
+<div align="center">
+   <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/7f83b57c-4dfa-46f1-87cf-81cdb0a21f09" />
+   <h1>Saturn - Self-Hosted Internet</h1>
+</div>
+
 
 A complete offline internet ecosystem built with Docker containers. This project provides access to knowledge, development tools, entertainment, and infrastructure services without requiring external internet connectivity.
 
-## 🌐 What is this?
+## What is this?
 
 This is a **self-hosted internet project** that creates a local network with various services to provide:
 
@@ -14,7 +18,7 @@ This is a **self-hosted internet project** that creates a local network with var
 
 Perfect for environments with limited or no internet connectivity, or for users who want privacy and control over their digital resources.
 
-## 📦 Features
+## Features
 
 ### Knowledge & Documentation
 
@@ -41,7 +45,7 @@ Perfect for environments with limited or no internet connectivity, or for users 
 - **Vaultwarden** (`vault.localhost`) - Password manager (Bitwarden-compatible)
 - **AdGuard Home** (`dns.localhost`) - DNS server with ad-blocking
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -53,7 +57,7 @@ Perfect for environments with limited or no internet connectivity, or for users 
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/QluxLab/Internet
    cd self-hosted-internet
    ```
 
@@ -82,7 +86,7 @@ Perfect for environments with limited or no internet connectivity, or for users 
 | LM Studio | `http://localhost:1234` | AI models |
 | Open WebUI | `http://localhost:8084` | AI chat interface |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 self-hosted-internet/
@@ -95,7 +99,7 @@ self-hosted-internet/
 └── README.md                   # This file
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Adding Content
 
@@ -129,7 +133,7 @@ The project uses Docker containers orchestrated with Docker Compose:
 - **Data Persistence**: Service data stored in local `data/` directory
 - **Load Balancing**: Nginx handles routing and SSL termination
 
-## 📊 Included Content
+## Included Content
 
 This project includes **115GB** of offline documentation in ZIM format covering:
 
@@ -139,21 +143,21 @@ This project includes **115GB** of offline documentation in ZIM format covering:
 - Databases (MySQL, PostgreSQL, MongoDB, Redis, etc.)
 - Cloud platforms and infrastructure tools
 
-## 🔐 Security
+## Security
 
 - **Network Isolation**: Services run in isolated Docker network
 - **Password Management**: Vaultwarden with WebSockets support
 - **DNS Filtering**: AdGuard Home blocks ads and trackers
 - **Local AI**: No external API calls for AI services
 
-## 🚨 Important Notes
+## Important Notes
 
 - **Storage Requirements**: The Wikipedia content requires 115GB of disk space
 - **Media Path**: Jellyfin serves content from `/d/video` - ensure this path exists or modify it
 - **DNS Configuration**: Set your system DNS to `127.0.0.1` to use AdGuard Home
 - **Localhost Access**: All services are accessible via localhost subdomains
 
-## 🔄 Maintenance
+## Maintenance
 
 ### Updating Services
 
@@ -182,18 +186,18 @@ docker-compose ps
 docker-compose logs --tail=100 [service-name]
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
 4. Submit a pull request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [Kiwix](https://kiwix.org/) - Offline content serving
 - [Jellyfin](https://jellyfin.org/) - Media streaming
