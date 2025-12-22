@@ -142,7 +142,7 @@ The Wikipedia content is already included (115GB). To add more ZIM files:
 
 Each service can be configured by modifying its section in `docker-compose.yml` or by adding environment variables and volume mounts.
 
-## 🛠️ Services Architecture
+## Services Architecture
 
 The project uses Docker containers orchestrated with Docker Compose:
 
