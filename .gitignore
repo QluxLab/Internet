@@ -4,3 +4,4 @@ nginx
 data
 !data\homepage\services.yaml
 .env
+.local
