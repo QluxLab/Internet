@@ -1,0 +1,53 @@
+- Knowledge:
+    - Wikipedia & DevDocs:
+        href: http://wiki.localhost
+        description: Encyclopedia and documentation
+        icon: wikipedia
+    - Notes:
+        href: http://notes.localhost
+        description: BookStack Wiki
+        icon: bookstack
+    - Read Later:
+        href: http://read.localhost
+        description: Wallabag
+        icon: wallabag
+    - PDF Tools:
+        href: http://pdf.localhost
+        description: Stirling PDF
+        icon: mdi-file-pdf
+
+- AI:
+    - LM Studio:
+        href: http://localhost:1234
+        description: Local models
+        icon: mdi-brain
+    - Open WebUI:
+        href: http://localhost:8084
+        description: Chat interface
+        icon: mdi-robot
+
+- Development:
+    - Gitea:
+        href: http://git.localhost
+        description: Git server
+        icon: gitea
+    - Files:
+        href: http://files.localhost
+        description: FileBrowser
+        icon: mdi-folder
+
+- Entertainment:
+    - Movies:
+        href: http://media.localhost
+        description: Jellyfin
+        icon: jellyfin
+
+- Infrastructure:
+    - Passwords:
+        href: http://vault.localhost
+        description: Vaultwarden
+        icon: bitwarden
+    - DNS & Ads:
+        href: http://dns.localhost
+        description: AdGuard Home
+        icon: adguard-home

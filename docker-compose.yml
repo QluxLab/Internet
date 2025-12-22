@@ -1,0 +1,196 @@
+version: '3.8'
+
+networks:
+  web:
+    driver: bridge
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+
+  adguard:
+    image: adguard/adguardhome:latest
+    container_name: adguard
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "3000:3000/tcp"
+    volumes:
+      - ./data/adguard/work:/opt/adguardhome/work
+      - ./data/adguard/conf:/opt/adguardhome/conf
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./data/homepage:/app/config
+    environment:
+      PUID: 1000
+      PGID: 1000
+      HOMEPAGE_VAR_TITLE: "Self-Hosted Internet"
+      HOMEPAGE_VAR_SEARCH_PROVIDER: Custom
+      HOMEPAGE_VAR_HEADER_STYLE: boxed
+      HOMEPAGE_VAR_STATUS_STYLE: dot
+      HOMEPAGE_ALLOWED_HOSTS: "*"
+      LOG_LEVEL: info
+
+  
+  kiwix:
+    image: ghcr.io/kiwix/kiwix-serve:latest
+    container_name: kiwix
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./wikipedia:/data:ro
+    command: "*.zim"
+
+  bookstack:
+    image: lscr.io/linuxserver/bookstack:latest
+    container_name: bookstack
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "6875:80"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      APP_URL: http://localhost:6875
+      DB_HOST: bookstack_db
+      DB_DATABASE: bookstackapp
+      DB_USERNAME: bookstack
+      DB_PASSWORD: bookstack_password
+    volumes:
+      - ./data/bookstack:/config
+    depends_on:
+      - bookstack_db
+
+  bookstack_db:
+    image: lscr.io/linuxserver/mariadb:latest
+    container_name: bookstack_db
+    restart: unless-stopped
+    networks:
+      - web
+    environment:
+      PUID: 1000
+      PGID: 1000
+      MYSQL_ROOT_PASSWORD: bookstack_root_password
+      MYSQL_DATABASE: bookstackapp
+      MYSQL_USER: bookstack
+      MYSQL_PASSWORD: bookstack_password
+    volumes:
+      - ./data/bookstack/db:/config
+
+  stirling-pdf:
+    image: frooodle/s-pdf:latest
+    container_name: stirling-pdf
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "8083:8080"
+    volumes:
+      - ./data/stirling-pdf:/usr/share/tessdata
+    environment:
+      DOCKER_ENABLE_SECURITY: false
+  open-webui:
+     image: ghcr.io/open-webui/open-webui:main
+     container_name: open-webui
+     restart: unless-stopped
+     networks:
+       - web
+     ports:
+       - "8084:8080"
+     volumes:
+       - ./data/open-webui:/app/backend/data
+     environment:
+       OPENAI_API_BASE_URL: http://host.docker.internal:1234/v1
+       OPENAI_API_KEY: lm-studio
+       WEBUI_AUTH: false
+     extra_hosts:
+       - "host.docker.internal:host-gateway"
+
+  
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "8096:8096"
+    volumes:
+      - ./data/jellyfin:/config
+      - /d/video:/media:ro
+    environment:
+      PUID: 1000
+      PGID: 1000
+  
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "3002:3000"
+      - "2222:22"
+    volumes:
+      - ./data/gitea:/data
+    environment:
+      USER_UID: 1000
+      USER_GID: 1000
+      GITEA__database__DB_TYPE: sqlite3
+      GITEA__server__DOMAIN: localhost
+      GITEA__server__ROOT_URL: http://localhost:3002
+  
+  filebrowser:
+    image: filebrowser/filebrowser:s6
+    container_name: filebrowser
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "8085:80"
+    volumes:
+      - ./data/filebrowser:/database
+      - /e/internet:/srv
+      - ./data/filebrowser/cfg:/config
+    environment:
+      - FB_BASEURL=/files
+  
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "8087:80"
+    volumes:
+      - ./data/vaultwarden:/data
+    environment:
+      WEBSOCKET_ENABLED: true
+      SIGNUPS_ALLOWED: true
+
+volumes:
+  nginx_letsencrypt:
