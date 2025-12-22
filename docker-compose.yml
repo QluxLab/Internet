@@ -14,7 +14,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ${NGINX_CONF_PATH}:/etc/nginx/nginx.conf:ro
 
   adguard:
     image: adguard/adguardhome:latest
@@ -27,8 +27,8 @@ services:
       - "53:53/udp"
       - "3000:3000/tcp"
     volumes:
-      - ./data/adguard/work:/opt/adguardhome/work
-      - ./data/adguard/conf:/opt/adguardhome/conf
+      - ${ADGUARD_WORK_PATH}:/opt/adguardhome/work
+      - ${ADGUARD_CONF_PATH}:/opt/adguardhome/conf
 
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
@@ -39,7 +39,7 @@ services:
     ports:
       - "3001:3000"
     volumes:
-      - ./data/homepage:/app/config
+      - ${HOMEPAGE_DATA_PATH}:/app/config
     environment:
       PUID: 1000
       PGID: 1000
@@ -60,7 +60,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./wikipedia:/data:ro
+      - ${WIKIPEDIA_DATA_PATH}:/data:ro
     command: "*.zim"
 
   bookstack:
@@ -80,7 +80,7 @@ services:
       DB_USERNAME: bookstack
       DB_PASSWORD: bookstack_password
     volumes:
-      - ./data/bookstack:/config
+      - ${BOOKSTACK_DATA_PATH}:/config
     depends_on:
       - bookstack_db
 
@@ -98,7 +98,7 @@ services:
       MYSQL_USER: bookstack
       MYSQL_PASSWORD: bookstack_password
     volumes:
-      - ./data/bookstack/db:/config
+      - ${BOOKSTACK_DB_PATH}:/config
 
   stirling-pdf:
     image: frooodle/s-pdf:latest
@@ -109,7 +109,7 @@ services:
     ports:
       - "8083:8080"
     volumes:
-      - ./data/stirling-pdf:/usr/share/tessdata
+      - ${STIRLING_PDF_DATA_PATH}:/usr/share/tessdata
     environment:
       DOCKER_ENABLE_SECURITY: false
   open-webui:
@@ -121,7 +121,7 @@ services:
      ports:
        - "8084:8080"
      volumes:
-       - ./data/open-webui:/app/backend/data
+       - ${OPEN_WEBUI_DATA_PATH}:/app/backend/data
      environment:
        OPENAI_API_BASE_URL: http://host.docker.internal:1234/v1
        OPENAI_API_KEY: lm-studio
@@ -139,8 +139,8 @@ services:
     ports:
       - "8096:8096"
     volumes:
-      - ./data/jellyfin:/config
-      - /d/video:/media:ro
+      - ${JELLYFIN_DATA_PATH}:/config
+      - ${VIDEO_DATA_PATH}:/media:ro
     environment:
       PUID: 1000
       PGID: 1000
@@ -155,7 +155,7 @@ services:
       - "3002:3000"
       - "2222:22"
     volumes:
-      - ./data/gitea:/data
+      - ${GITEA_DATA_PATH}:/data
     environment:
       USER_UID: 1000
       USER_GID: 1000
@@ -172,9 +172,9 @@ services:
     ports:
       - "8085:80"
     volumes:
-      - ./data/filebrowser:/database
-      - /e/internet:/srv
-      - ./data/filebrowser/cfg:/config
+      - ${FILEBROWSER_DATA_PATH}:/database
+      - ${FILEBROWSER_FILES}:/srv
+      - ${FILEBROWSER_CFG_PATH}:/config
     environment:
       - FB_BASEURL=/files
   
@@ -187,7 +187,7 @@ services:
     ports:
       - "8087:80"
     volumes:
-      - ./data/vaultwarden:/data
+      - ${VAULTWARDEN_DATA_PATH}:/data
     environment:
       WEBSOCKET_ENABLED: true
       SIGNUPS_ALLOWED: true

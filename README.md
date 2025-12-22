@@ -101,6 +101,24 @@ self-hosted-internet/
 
 ## Configuration
 
+### Environment Variables
+
+This project uses environment variables for configuration. A template is provided in `.env.example`:
+
+1. **Copy the template:**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Customize paths and settings:**
+   Edit `.env` to match your system's directory structure and preferences.
+
+3. **Key variables you may want to modify:**
+   - `VIDEO_DATA_PATH` - Path to your media files (default: `./media`)
+   - `FILEBROWSER_FILES` - Path to your internet data (default: `.`)
+   - `*_DATA_PATH` - Various service data directories
+   - Database passwords for security
+
 ### Adding Content
 
 #### Media Content

@@ -3,3 +3,4 @@ nginx
 !nginx\nginx.conf
 data
 !data\homepage\services.yaml
+.env
