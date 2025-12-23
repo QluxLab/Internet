@@ -184,7 +184,7 @@ This project includes **115GB** of offline documentation in ZIM format covering:
 ## Important Notes
 
 - **Storage Requirements**: The Wikipedia content requires 115GB of disk space
-- **Media Path**: Jellyfin serves content from `/d/video` - ensure this path exists or modify it
+- **Media Path**: Jellyfin serves content from `./media` - ensure this path exists or modify it
 - **DNS Configuration**: Set your system DNS to `127.0.0.1` to use AdGuard Home
 - **Localhost Access**: All services are accessible via localhost subdomains
 
