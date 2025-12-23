@@ -14,6 +14,7 @@ This is a **self-hosted internet project** that creates a local network with var
 - **Development Tools** - Git repositories, file management, PDF tools
 - **Entertainment** - Media streaming with Jellyfin
 - **AI Services** - Local AI models and chat interfaces
+- **Utilities** - IT tools, data analysis, drawing, and file syncing
 - **Infrastructure** - Password management, DNS filtering, ad-blocking
 
 Perfect for environments with limited or no internet connectivity, or for users who want privacy and control over their digital resources.
@@ -30,6 +31,13 @@ Perfect for environments with limited or no internet connectivity, or for users 
 
 - **LM Studio** (`localhost:1234`) - Local AI model hosting
 - **Open WebUI** (`localhost:8084`) - Chat interface for AI models
+
+### Utilities
+- **IT-Tools** (`tools.localhost`) - Collection of 70+ developer tools
+- **CyberChef** (`chef.localhost`) - Encryption, encoding, and data analysis
+- **Excalidraw** (`draw.localhost`) - Virtual whiteboard for sketching
+- **Uptime Kuma** (`status.localhost`) - Service monitoring status page
+- **Syncthing** (`sync.localhost`) - File synchronization
 
 ### Development Tools
 
@@ -84,7 +92,12 @@ Perfect for environments with limited or no internet connectivity, or for users 
 | Notes | `http://notes.localhost` | Wiki platform |
 | DNS Admin | `http://dns.localhost` | DNS and ad-blocking |
 | LM Studio | `http://localhost:1234` | AI models |
-| Open WebUI | `http://localhost:8084` | AI chat interface |
+| | Open WebUI | `http://localhost:8084` | AI chat interface |
+| | IT-Tools | `http://tools.localhost` | Developer utilities |
+| | CyberChef | `http://chef.localhost` | Data analysis tools |
+| | Excalidraw | `http://draw.localhost` | Diagramming tool |
+| | Status | `http://status.localhost` | Service monitoring |
+| | Syncthing | `http://sync.localhost` | File synchronization |
 
 ## Project Structure
 
@@ -224,6 +237,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [AdGuard Home](https://adguard.com/en/adguard-home/overview.html) - DNS filtering
 - [Stirling PDF](https://stirling.tools/) - PDF tools
 - [Homepage](https://gethomepage.dev/) - Dashboard interface
+- [IT-Tools](https://github.com/CorentinTh/it-tools) - Developer tools collection
+- [CyberChef](https://github.com/gchq/CyberChef) - The Cyber Swiss Army Knife
+- [Excalidraw](https://excalidraw.com/) - Virtual whiteboard
+- [Uptime Kuma](https://github.com/louislam/uptime-kuma) - Monitoring tool
+- [Syncthing](https://syncthing.net/) - File synchronization
 
 ---
 

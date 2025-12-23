@@ -26,6 +26,24 @@
         description: Chat interface
         icon: mdi-robot
 
+- Utilities:
+    - IT Tools:
+        href: http://tools.localhost
+        description: Developer utilities
+        icon: mdi-tools
+    - CyberChef:
+        href: http://chef.localhost
+        description: Data analysis
+        icon: mdi-chef-hat
+    - Excalidraw:
+        href: http://draw.localhost
+        description: Virtual whiteboard
+        icon: mdi-draw
+    - Syncthing:
+        href: http://sync.localhost
+        description: File syncing
+        icon: syncthing
+
 - Development:
     - Gitea:
         href: http://git.localhost
@@ -51,3 +69,7 @@
         href: http://dns.localhost
         description: AdGuard Home
         icon: adguard-home
+    - Status:
+        href: http://status.localhost
+        description: Service monitoring
+        icon: uptime-kuma
