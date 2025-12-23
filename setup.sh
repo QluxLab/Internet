@@ -12,6 +12,11 @@ docker save -o .local/jellyfin_latest.tar jellyfin/jellyfin:latest > /dev/null 2
 docker save -o .local/gitea_latest.tar gitea/gitea:latest > /dev/null 2>&1
 docker save -o .local/filebrowser_s6.tar filebrowser/filebrowser:s6 > /dev/null 2>&1
 docker save -o .local/vaultwarden_latest.tar vaultwarden/server:latest > /dev/null 2>&1
+docker save -o .local/it_tools_latest.tar corentinth/it-tools:latest > /dev/null 2>&1
+docker save -o .local/cyberchef_latest.tar mpepping/cyberchef:latest > /dev/null 2>&1
+docker save -o .local/excalidraw_latest.tar excalidraw/excalidraw:latest > /dev/null 2>&1
+docker save -o .local/uptime_kuma_1.tar louislam/uptime-kuma:1 > /dev/null 2>&1
+docker save -o .local/syncthing_latest.tar lscr.io/linuxserver/syncthing:latest > /dev/null 2>&1
 
 echo "==> Downloading Wikipedia content..."
 mkdir -p ./wikipedia

@@ -192,5 +192,64 @@ services:
       WEBSOCKET_ENABLED: true
       SIGNUPS_ALLOWED: true
 
+  it-tools:
+    image: corentinth/it-tools:latest
+    container_name: it-tools
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "8081:80"
+
+  cyberchef:
+    image: mpepping/cyberchef:latest
+    container_name: cyberchef
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "8082:8000"
+
+  excalidraw:
+    image: excalidraw/excalidraw:latest
+    container_name: excalidraw
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "8088:80"
+    environment:
+      - NODE_ENV=production
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "3003:3001"
+    volumes:
+      - ${UPTIME_KUMA_DATA_PATH}:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  syncthing:
+    image: lscr.io/linuxserver/syncthing:latest
+    container_name: syncthing
+    restart: unless-stopped
+    networks:
+      - web
+    ports:
+      - "8384:8384"
+      - "22000:22000/tcp"
+      - "22000:22000/udp"
+      - "21027:21027/udp"
+    environment:
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - ${SYNCTHING_CONFIG_PATH}:/config
+      - ${SYNCTHING_DATA_PATH}:/data1
+
 volumes:
   nginx_letsencrypt:
