@@ -92,12 +92,12 @@ Perfect for environments with limited or no internet connectivity, or for users 
 | Notes | `http://notes.localhost` | Wiki platform |
 | DNS Admin | `http://dns.localhost` | DNS and ad-blocking |
 | LM Studio | `http://localhost:1234` | AI models |
-| | Open WebUI | `http://localhost:8084` | AI chat interface |
-| | IT-Tools | `http://tools.localhost` | Developer utilities |
-| | CyberChef | `http://chef.localhost` | Data analysis tools |
-| | Excalidraw | `http://draw.localhost` | Diagramming tool |
-| | Status | `http://status.localhost` | Service monitoring |
-| | Syncthing | `http://sync.localhost` | File synchronization |
+| Open WebUI | `http://localhost:8084` | AI chat interface |
+| IT-Tools | `http://tools.localhost` | Developer utilities |
+| CyberChef | `http://chef.localhost` | Data analysis tools |
+| Excalidraw | `http://draw.localhost` | Diagramming tool |
+| Status | `http://status.localhost` | Service monitoring |
+| Syncthing | `http://sync.localhost` | File synchronization |
 
 ## Project Structure
 
@@ -136,7 +136,7 @@ This project uses environment variables for configuration. A template is provide
 
 #### Media Content
 
-To add media files for Jellyfin, place them in the `/d/video` directory on your system, or modify the path in `docker-compose.yml`:
+To add media files for Jellyfin, place them in the `./media` directory on your system, or modify the path in `docker-compose.yml`:
 
 ```yaml
 volumes:
